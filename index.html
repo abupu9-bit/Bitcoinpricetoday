@@ -5,54 +5,89 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Bitcoin Price Today | Live BTC Chart</title>
+<title>Bitcoin Price Today | BTC Live Dashboard</title>
 
-<meta name="description" content="Live Bitcoin price today with BTC chart, buy calculator, halving countdown, and Bitcoin market cycle indicator.">
+<meta name="description" content="Live Bitcoin price today, BTC chart, buy calculator, halving countdown and crypto market dashboard.">
 
 <style>
 
 body{
 font-family:Arial,sans-serif;
-background:#0f172a;
+background:linear-gradient(180deg,#020617,#0f172a);
 color:white;
 margin:0;
 text-align:center;
 }
 
 header{
-background:#020617;
-padding:40px 20px;
+padding:50px 20px;
 }
 
 h1{
-font-size:34px;
+font-size:36px;
 margin-bottom:10px;
 }
 
 .price-box{
-font-size:44px;
-margin-top:20px;
+font-size:52px;
 color:#facc15;
 font-weight:bold;
+text-shadow:0 0 15px rgba(250,204,21,0.5);
 }
 
-.section{
-padding:50px 20px;
-max-width:1000px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+max-width:1200px;
 margin:auto;
+padding:30px 20px;
 }
 
-.tool-box{
+.card{
 background:#020617;
-padding:30px;
-border-radius:10px;
-margin-top:25px;
+border-radius:12px;
+padding:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-.phase{
+.card h3{
+margin-top:0;
+}
+
+.big{
 font-size:28px;
 font-weight:bold;
 margin-top:10px;
+}
+
+input{
+padding:12px;
+font-size:18px;
+border-radius:6px;
+border:none;
+width:80%;
+margin-top:10px;
+}
+
+.result{
+font-size:22px;
+color:#38bdf8;
+margin-top:10px;
+}
+
+.bar{
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+height:14px;
+margin-top:10px;
+}
+
+.bar-fill{
+height:100%;
+background:#22c55e;
+width:0%;
 }
 
 .accumulation{color:#22c55e;}
@@ -60,27 +95,20 @@ margin-top:10px;
 .euphoria{color:#facc15;}
 .correction{color:#ef4444;}
 
-input{
-padding:10px;
-font-size:18px;
-width:200px;
-border-radius:6px;
-border:none;
-margin-top:10px;
+.section{
+max-width:1200px;
+margin:auto;
+padding:30px 20px;
 }
 
-.result{
-font-size:22px;
-margin-top:15px;
-color:#38bdf8;
+.share{
+margin-top:40px;
 }
 
-.share-btn{
-display:inline-block;
-margin-top:25px;
-padding:12px 20px;
+.share a{
 background:#1d9bf0;
 color:white;
+padding:12px 20px;
 border-radius:6px;
 text-decoration:none;
 font-weight:bold;
@@ -89,12 +117,12 @@ font-weight:bold;
 .credit{
 font-size:12px;
 opacity:0.6;
-margin-top:8px;
+margin-top:6px;
 }
 
 footer{
-margin-top:30px;
-padding:20px;
+margin-top:40px;
+padding:30px;
 font-size:13px;
 opacity:0.7;
 }
@@ -109,15 +137,13 @@ opacity:0.7;
 
 <h1>Bitcoin Price Today</h1>
 
-<p>Track live Bitcoin price, BTC chart, and market cycle.</p>
-
 <div class="price-box" id="btc-price">
-Loading BTC price...
+Loading...
 </div>
 
 <p class="credit">
 Price data powered by 
-<a href="https://www.coingecko.com/" target="_blank" style="color:#38bdf8;">CoinGecko</a>
+<a href="https://www.coingecko.com" target="_blank" style="color:#38bdf8;">CoinGecko</a>
 </p>
 
 </header>
@@ -137,35 +163,92 @@ width:"100%",
 height:500,
 symbol:"BINANCE:BTCUSDT",
 interval:"D",
-timezone:"Etc/UTC",
 theme:"dark",
 style:"1",
 locale:"en",
-allow_symbol_change:false,
 container_id:"tradingview_btc"
 });
 </script>
 
 <p class="credit">
 Chart powered by 
-<a href="https://www.tradingview.com/" target="_blank" style="color:#38bdf8;">TradingView</a>
+<a href="https://www.tradingview.com" target="_blank" style="color:#38bdf8;">TradingView</a>
 </p>
 
 </div>
 
 
-<div class="section">
+<div class="grid">
 
-<h2>Buy Bitcoin Calculator</h2>
+<div class="card">
 
-<div class="tool-box">
-
-<p>Enter USD amount to see how much BTC you get.</p>
+<h3>Buy Bitcoin Calculator</h3>
 
 <input type="number" id="usd-input" placeholder="USD amount">
 
 <div class="result" id="btc-result">
-BTC amount will appear here
+0 BTC
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Bitcoin Market Cycle</h3>
+
+<div id="cycle-phase" class="big">
+Loading...
+</div>
+
+<p id="cycle-desc"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Halving Countdown</h3>
+
+<div class="big" id="halving">
+Loading...
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Bitcoin All Time High</h3>
+
+<div class="big" id="ath">
+Loading...
+</div>
+
+<div id="ath-distance"></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Market Sentiment</h3>
+
+<div class="big" id="sentiment">
+Neutral
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Bitcoin Supply Mined</h3>
+
+<div id="supply-text">Loading...</div>
+
+<div class="bar">
+<div class="bar-fill" id="supply-bar"></div>
 </div>
 
 </div>
@@ -173,58 +256,9 @@ BTC amount will appear here
 </div>
 
 
-<div class="section">
+<div class="share">
 
-<h2>Bitcoin Market Cycle</h2>
-
-<div class="tool-box">
-
-<div id="cycle-phase" class="phase">
-Loading cycle...
-</div>
-
-<p id="cycle-desc" style="opacity:0.8;"></p>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<h2>Bitcoin Halving Countdown</h2>
-
-<div class="tool-box">
-
-<div class="phase" id="halving">
-Loading countdown...
-</div>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<h2>Bitcoin All Time High</h2>
-
-<div class="tool-box">
-
-<div class="phase" id="ath">
-Loading ATH...
-</div>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<a class="share-btn"
-href="https://twitter.com/intent/tweet?text=Bitcoin%20Price%20Today%20Live%20BTC%20Chart&url=https://www.cryptokita.com"
-target="_blank">
+<a href="https://twitter.com/intent/tweet?text=Bitcoin%20Price%20Today%20Live%20BTC%20Dashboard&url=https://www.cryptokita.com" target="_blank">
 Share on X
 </a>
 
@@ -234,14 +268,14 @@ Share on X
 <footer>
 
 <p>
-Learn more about Bitcoin cycles and crypto guides at
+Learn more crypto insights at 
 <a href="https://www.cryptokita.com" target="_blank" style="color:#38bdf8;">
 CryptoKita
 </a>
 </p>
 
 <p>
-Disclaimer: This page is for informational purposes only and not financial advice.
+Disclaimer: Informational only, not financial advice.
 </p>
 
 </footer>
@@ -294,8 +328,8 @@ function bitcoinCycle(){
 const year=new Date().getFullYear();
 
 let phase="";
-let desc="";
 let css="";
+let desc="";
 
 let cycle=(year-2024)%4;
 
@@ -303,7 +337,7 @@ if(cycle===0){
 
 phase="BULL RUN";
 css="bull";
-desc="Expansion phase after Bitcoin halving.";
+desc="Expansion phase after halving.";
 
 }
 
@@ -311,7 +345,7 @@ if(cycle===1){
 
 phase="EUPHORIA";
 css="euphoria";
-desc="Bull market peak historically occurs.";
+desc="Historically peak bull market.";
 
 }
 
@@ -319,7 +353,7 @@ if(cycle===2){
 
 phase="CORRECTION";
 css="correction";
-desc="Market cool down after peak.";
+desc="Market cooling after peak.";
 
 }
 
@@ -327,12 +361,14 @@ if(cycle===3){
 
 phase="ACCUMULATION";
 css="accumulation";
-desc="Early accumulation before next halving.";
+desc="Early accumulation stage.";
 
 }
 
-document.getElementById("cycle-phase").innerHTML=phase;
-document.getElementById("cycle-phase").className="phase "+css;
+let el=document.getElementById("cycle-phase");
+
+el.innerHTML=phase;
+el.className="big "+css;
 
 document.getElementById("cycle-desc").innerHTML=desc;
 
@@ -343,16 +379,14 @@ bitcoinCycle();
 
 function halvingCountdown(){
 
-let halvingDate=new Date("2028-04-01").getTime();
+let halving=new Date("2028-04-01").getTime();
 
 let now=new Date().getTime();
 
-let distance=halvingDate-now;
-
-let days=Math.floor(distance/(1000*60*60*24));
+let days=Math.floor((halving-now)/(1000*60*60*24));
 
 document.getElementById("halving").innerHTML=
-days+" days until next Bitcoin halving";
+days+" days";
 
 }
 
@@ -369,18 +403,71 @@ let data=await res.json();
 
 let ath=data.market_data.ath.usd;
 
-document.getElementById("ath").innerHTML=
-"$"+ath.toLocaleString();
+document.getElementById("ath").innerHTML="$"+ath.toLocaleString();
+
+let distance=((btcPrice-ath)/ath*100).toFixed(2);
+
+document.getElementById("ath-distance").innerHTML=
+distance+"% from ATH";
 
 }catch{
 
-document.getElementById("ath").innerHTML="ATH unavailable";
+document.getElementById("ath").innerHTML="Unavailable";
 
 }
 
 }
 
-loadATH();
+setTimeout(loadATH,2000);
+
+
+function sentiment(){
+
+if(btcPrice>90000){
+
+document.getElementById("sentiment").innerHTML="Extreme Greed";
+
+}
+
+else if(btcPrice>70000){
+
+document.getElementById("sentiment").innerHTML="Greed";
+
+}
+
+else if(btcPrice>40000){
+
+document.getElementById("sentiment").innerHTML="Neutral";
+
+}
+
+else{
+
+document.getElementById("sentiment").innerHTML="Fear";
+
+}
+
+}
+
+setInterval(sentiment,5000);
+
+
+function supply(){
+
+let mined=19.6;
+let total=21;
+
+let percent=(mined/total)*100;
+
+document.getElementById("supply-text").innerHTML=
+mined+"M / 21M BTC";
+
+document.getElementById("supply-bar").style.width=
+percent+"%";
+
+}
+
+supply();
 
 </script>
 
