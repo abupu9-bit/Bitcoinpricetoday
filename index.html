@@ -263,6 +263,80 @@ Share on X
 </a>
 
 </div>
+<div style="max-width:700px;margin:70px auto;text-align:center;padding:35px;background:#020617;border-radius:14px;box-shadow:0 15px 40px rgba(0,0,0,0.5);">
+
+<h2>Support CryptoKita</h2>
+
+<p style="opacity:0.8;font-size:15px;">
+If this Bitcoin dashboard helps you, consider supporting the project with a small crypto tip.
+Every contribution helps keep CryptoKita running.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:30px;">
+
+<!-- BTC -->
+
+<div style="background:#0f172a;padding:20px;border-radius:10px;">
+
+<h3>Bitcoin (BTC)</h3>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t" alt="BTC donation QR">
+
+<div id="btc-address" style="margin-top:10px;background:#020617;padding:10px;border-radius:6px;word-break:break-all;font-size:13px;">
+bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t
+</div>
+
+<button onclick="copyBTC()" style="margin-top:10px;padding:8px 18px;background:#f7931a;border:none;border-radius:6px;color:white;font-weight:bold;cursor:pointer;">
+Copy BTC
+</button>
+
+</div>
+
+
+<!-- BNB -->
+
+<div style="background:#0f172a;padding:20px;border-radius:10px;">
+
+<h3>BNB (BEP20)</h3>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=0x992F05564dBEb7855d60B526C561016BbB44cbA7" alt="BNB donation QR">
+
+<div id="bnb-address" style="margin-top:10px;background:#020617;padding:10px;border-radius:6px;word-break:break-all;font-size:13px;">
+0x992F05564dBEb7855d60B526C561016BbB44cbA7
+</div>
+
+<button onclick="copyBNB()" style="margin-top:10px;padding:8px 18px;background:#f3ba2f;border:none;border-radius:6px;color:black;font-weight:bold;cursor:pointer;">
+Copy BNB
+</button>
+
+</div>
+
+</div>
+
+<p id="copy-msg" style="margin-top:15px;font-size:13px;"></p>
+
+</div>
+
+
+<script>
+
+function copyBTC(){
+
+const text=document.getElementById("btc-address").innerText;
+navigator.clipboard.writeText(text);
+document.getElementById("copy-msg").innerHTML="BTC address copied 👍";
+
+}
+
+function copyBNB(){
+
+const text=document.getElementById("bnb-address").innerText;
+navigator.clipboard.writeText(text);
+document.getElementById("copy-msg").innerHTML="BNB address copied 👍";
+
+}
+
+</script>
 
 
 <footer>
