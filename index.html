@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Bitcoin Price Today | Live BTC Chart</title>
+
+<meta name="description" content="Check Bitcoin price today with live BTC chart and Bitcoin market cycle indicator. Track Bitcoin market movements in real time.">
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
+margin:0;
+text-align:center;
+}
+
+header{
+background:#020617;
+padding:40px 20px;
+}
+
+h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.price-box{
+font-size:42px;
+margin-top:20px;
+color:#facc15;
+font-weight:bold;
+}
+
+.section{
+padding:50px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+.cycle-box{
+background:#020617;
+padding:30px;
+border-radius:10px;
+}
+
+.cycle-box img{
+max-width:100%;
+border-radius:8px;
+margin-top:20px;
+}
+
+.promo{
+background:#111827;
+padding:40px 20px;
+margin-top:40px;
+}
+
+.promo a{
+color:#38bdf8;
+font-size:18px;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer{
+margin-top:30px;
+padding:20px;
+font-size:13px;
+opacity:0.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Bitcoin Price Today</h1>
+
+<p>Track the live Bitcoin price and market chart in real time.</p>
+
+<div class="price-box" id="btc-price">
+Loading BTC price...
+</div>
+
+</header>
+
+<div class="section">
+
+<h2>Live Bitcoin Chart</h2>
+
+<div class="tradingview-widget-container">
+
+<div id="tradingview_btc"></div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+
+<script>
+new TradingView.widget(
+{
+"width": "100%",
+"height": 500,
+"symbol": "BINANCE:BTCUSDT",
+"interval": "D",
+"timezone": "Etc/UTC",
+"theme": "dark",
+"style": "1",
+"locale": "en",
+"toolbar_bg": "#f1f3f6",
+"enable_publishing": false,
+"hide_top_toolbar": false,
+"allow_symbol_change": false,
+"container_id": "tradingview_btc"
+});
+</script>
+
+<p style="font-size:12px;opacity:0.7;margin-top:8px;">
+Chart data powered by 
+<a href="https://www.tradingview.com/" target="_blank" style="color:#38bdf8;">
+TradingView
+</a>
+</p>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Bitcoin Market Cycle Indicator</h2>
+
+<div class="cycle-box">
+
+<p>
+Bitcoin historically moves in repeating market cycles influenced by supply halving events, global liquidity, and investor sentiment.
+</p>
+
+<p>
+These cycles often include phases such as accumulation, expansion, euphoria, and correction.
+Understanding the broader cycle can help investors interpret long-term market trends.
+</p>
+
+<img src="bitcoin-cycle.png" alt="Bitcoin Market Cycle">
+
+<p>
+This simplified cycle illustration is for educational purposes and may not represent real-time market conditions.
+</p>
+
+</div>
+
+</div>
+
+<div class="promo">
+
+<h3>Learn More About Bitcoin</h3>
+
+<p>
+Discover in-depth Bitcoin guides, market cycles, and crypto education on CryptoKita.
+</p>
+
+<p>
+<a href="https://www.cryptokita.com" target="_blank">
+Visit CryptoKita.com
+</a>
+</p>
+
+</div>
+
+<footer>
+
+<p>
+Disclaimer: This page is for informational purposes only and does not constitute financial advice.
+</p>
+
+<p>
+© CryptoKita
+</p>
+
+</footer>
+
+<script>
+
+async function loadBTC(){
+
+try{
+
+let res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+
+let data = await res.json();
+
+document.getElementById("btc-price").innerHTML =
+"$" + data.bitcoin.usd.toLocaleString();
+
+}catch(e){
+
+document.getElementById("btc-price").innerHTML = "Price unavailable";
+
+}
+
+}
+
+loadBTC();
+
+setInterval(loadBTC,30000);
+
+</script>
+
+</body>
+</html>
