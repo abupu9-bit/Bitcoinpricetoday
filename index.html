@@ -7,7 +7,7 @@
 
 <title>Bitcoin Price Today | Live BTC Chart</title>
 
-<meta name="description" content="Check Bitcoin price today with live BTC chart, automatic Bitcoin cycle indicator, and real-time BTC market data.">
+<meta name="description" content="Live Bitcoin price today with BTC chart, buy calculator, halving countdown, and Bitcoin market cycle indicator.">
 
 <style>
 
@@ -30,7 +30,7 @@ margin-bottom:10px;
 }
 
 .price-box{
-font-size:42px;
+font-size:44px;
 margin-top:20px;
 color:#facc15;
 font-weight:bold;
@@ -42,26 +42,38 @@ max-width:1000px;
 margin:auto;
 }
 
-h2{
-margin-bottom:20px;
-}
-
-.cycle-box{
+.tool-box{
 background:#020617;
 padding:30px;
 border-radius:10px;
+margin-top:25px;
 }
 
 .phase{
 font-size:28px;
 font-weight:bold;
-margin-top:15px;
+margin-top:10px;
 }
 
 .accumulation{color:#22c55e;}
 .bull{color:#38bdf8;}
 .euphoria{color:#facc15;}
 .correction{color:#ef4444;}
+
+input{
+padding:10px;
+font-size:18px;
+width:200px;
+border-radius:6px;
+border:none;
+margin-top:10px;
+}
+
+.result{
+font-size:22px;
+margin-top:15px;
+color:#38bdf8;
+}
 
 .share-btn{
 display:inline-block;
@@ -74,17 +86,10 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.promo{
-background:#111827;
-padding:40px 20px;
-margin-top:40px;
-}
-
-.promo a{
-color:#38bdf8;
-font-size:18px;
-text-decoration:none;
-font-weight:bold;
+.credit{
+font-size:12px;
+opacity:0.6;
+margin-top:8px;
 }
 
 footer{
@@ -92,12 +97,6 @@ margin-top:30px;
 padding:20px;
 font-size:13px;
 opacity:0.7;
-}
-
-.credit{
-font-size:12px;
-opacity:0.6;
-margin-top:8px;
 }
 
 </style>
@@ -110,7 +109,7 @@ margin-top:8px;
 
 <h1>Bitcoin Price Today</h1>
 
-<p>Track the live Bitcoin price and chart in real time.</p>
+<p>Track live Bitcoin price, BTC chart, and market cycle.</p>
 
 <div class="price-box" id="btc-price">
 Loading BTC price...
@@ -118,9 +117,7 @@ Loading BTC price...
 
 <p class="credit">
 Price data powered by 
-<a href="https://www.coingecko.com/" target="_blank" style="color:#38bdf8;">
-CoinGecko
-</a>
+<a href="https://www.coingecko.com/" target="_blank" style="color:#38bdf8;">CoinGecko</a>
 </p>
 
 </header>
@@ -136,24 +133,22 @@ CoinGecko
 
 <script>
 new TradingView.widget({
-"width":"100%",
-"height":500,
-"symbol":"BINANCE:BTCUSDT",
-"interval":"D",
-"timezone":"Etc/UTC",
-"theme":"dark",
-"style":"1",
-"locale":"en",
-"allow_symbol_change":false,
-"container_id":"tradingview_btc"
+width:"100%",
+height:500,
+symbol:"BINANCE:BTCUSDT",
+interval:"D",
+timezone:"Etc/UTC",
+theme:"dark",
+style:"1",
+locale:"en",
+allow_symbol_change:false,
+container_id:"tradingview_btc"
 });
 </script>
 
 <p class="credit">
 Chart powered by 
-<a href="https://www.tradingview.com/" target="_blank" style="color:#38bdf8;">
-TradingView
-</a>
+<a href="https://www.tradingview.com/" target="_blank" style="color:#38bdf8;">TradingView</a>
 </p>
 
 </div>
@@ -161,44 +156,77 @@ TradingView
 
 <div class="section">
 
-<h2>Bitcoin Market Cycle Indicator</h2>
+<h2>Buy Bitcoin Calculator</h2>
 
-<div class="cycle-box">
+<div class="tool-box">
 
-<p>
-Bitcoin historically moves through repeating market cycles influenced by halving events and investor sentiment.
-</p>
+<p>Enter USD amount to see how much BTC you get.</p>
+
+<input type="number" id="usd-input" placeholder="USD amount">
+
+<div class="result" id="btc-result">
+BTC amount will appear here
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Bitcoin Market Cycle</h2>
+
+<div class="tool-box">
 
 <div id="cycle-phase" class="phase">
 Loading cycle...
 </div>
 
-<p id="cycle-desc" style="opacity:0.8;margin-top:10px;"></p>
+<p id="cycle-desc" style="opacity:0.8;"></p>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Bitcoin Halving Countdown</h2>
+
+<div class="tool-box">
+
+<div class="phase" id="halving">
+Loading countdown...
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Bitcoin All Time High</h2>
+
+<div class="tool-box">
+
+<div class="phase" id="ath">
+Loading ATH...
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
 
 <a class="share-btn"
-href="https://twitter.com/intent/tweet?text=Bitcoin%20Price%20Today%20-%20Live%20BTC%20Chart&url=https://www.cryptokita.com"
+href="https://twitter.com/intent/tweet?text=Bitcoin%20Price%20Today%20Live%20BTC%20Chart&url=https://www.cryptokita.com"
 target="_blank">
 Share on X
 </a>
-
-</div>
-
-</div>
-
-
-<div class="promo">
-
-<h3>Learn More About Bitcoin</h3>
-
-<p>
-Discover Bitcoin guides, market cycle analysis, and crypto education on CryptoKita.
-</p>
-
-<p>
-<a href="https://www.cryptokita.com" target="_blank">
-Visit CryptoKita.com
-</a>
-</p>
 
 </div>
 
@@ -206,11 +234,14 @@ Visit CryptoKita.com
 <footer>
 
 <p>
-Disclaimer: This page is for informational purposes only and does not constitute financial advice.
+Learn more about Bitcoin cycles and crypto guides at
+<a href="https://www.cryptokita.com" target="_blank" style="color:#38bdf8;">
+CryptoKita
+</a>
 </p>
 
 <p>
-© CryptoKita
+Disclaimer: This page is for informational purposes only and not financial advice.
 </p>
 
 </footer>
@@ -218,16 +249,19 @@ Disclaimer: This page is for informational purposes only and does not constitute
 
 <script>
 
+let btcPrice=0;
+
 async function loadBTC(){
 
 try{
 
-let res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+let res=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
 
-let data = await res.json();
+let data=await res.json();
 
-document.getElementById("btc-price").innerHTML =
-"$" + data.bitcoin.usd.toLocaleString();
+btcPrice=data.bitcoin.usd;
+
+document.getElementById("btc-price").innerHTML="$"+btcPrice.toLocaleString();
 
 }catch{
 
@@ -241,81 +275,59 @@ loadBTC();
 setInterval(loadBTC,30000);
 
 
+document.getElementById("usd-input").addEventListener("input",function(){
+
+let usd=this.value;
+
+if(!btcPrice)return;
+
+let btc=usd/btcPrice;
+
+document.getElementById("btc-result").innerHTML=
+btc.toFixed(6)+" BTC";
+
+});
+
+
 function bitcoinCycle(){
 
-const year = new Date().getFullYear();
+const year=new Date().getFullYear();
 
 let phase="";
 let desc="";
 let css="";
 
-if(year===2023){
-
-phase="ACCUMULATION";
-desc="Market recovering after bear cycle.";
-css="accumulation";
-
-}
-
-else if(year===2024){
-
-phase="BULL RUN";
-desc="Bitcoin halving triggered a new expansion phase.";
-css="bull";
-
-}
-
-else if(year===2025){
-
-phase="EUPHORIA";
-desc="Bull market peak zone historically appears in this phase.";
-css="euphoria";
-
-}
-
-else if(year===2026){
-
-phase="CORRECTION";
-desc="Markets historically cool down after euphoric peaks.";
-css="correction";
-
-}
-
-else{
-
-let cycle = (year-2024)%4;
+let cycle=(year-2024)%4;
 
 if(cycle===0){
 
 phase="BULL RUN";
-desc="Halving expansion cycle.";
 css="bull";
+desc="Expansion phase after Bitcoin halving.";
 
 }
 
 if(cycle===1){
 
 phase="EUPHORIA";
-desc="Bull market peak zone.";
 css="euphoria";
+desc="Bull market peak historically occurs.";
 
 }
 
 if(cycle===2){
 
 phase="CORRECTION";
-desc="Post-bull correction phase.";
 css="correction";
+desc="Market cool down after peak.";
 
 }
 
 if(cycle===3){
 
 phase="ACCUMULATION";
-desc="Early stage accumulation before next halving.";
 css="accumulation";
-
-}
+desc="Early accumulation before next halving.";
 
 }
 
@@ -327,6 +339,48 @@ document.getElementById("cycle-desc").innerHTML=desc;
 }
 
 bitcoinCycle();
+
+
+function halvingCountdown(){
+
+let halvingDate=new Date("2028-04-01").getTime();
+
+let now=new Date().getTime();
+
+let distance=halvingDate-now;
+
+let days=Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("halving").innerHTML=
+days+" days until next Bitcoin halving";
+
+}
+
+halvingCountdown();
+
+
+async function loadATH(){
+
+try{
+
+let res=await fetch("https://api.coingecko.com/api/v3/coins/bitcoin");
+
+let data=await res.json();
+
+let ath=data.market_data.ath.usd;
+
+document.getElementById("ath").innerHTML=
+"$"+ath.toLocaleString();
+
+}catch{
+
+document.getElementById("ath").innerHTML="ATH unavailable";
+
+}
+
+}
+
+loadATH();
 
 </script>
 
