@@ -6,10 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Bitcoin Price Today | BTC Live Dashboard</title>
+
 <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/abupu9-bit/Bitcoinpricetoday/93e5a37845614d98323f4159876f972bbf47d43c/favicon-32x32.png">
-<link rel="shortcut icon" href="https://raw.githubusercontent.com/abupu9-bit/Bitcoinpricetoday/93e5a37845614d98323f4159876f972bbf47d43c/favicon-32x32.png">
+
 <meta name="description" content="Live Bitcoin price today, BTC chart, buy calculator, halving countdown and crypto market dashboard.">
+
+<link rel="preconnect" href="https://api.coingecko.com">
+<link rel="preconnect" href="https://s3.tradingview.com">
+<link rel="preconnect" href="https://jsc.mgid.com">
+
 <script src="https://jsc.mgid.com/site/1085852.js" async></script>
+
 <style>
 
 body{
@@ -138,9 +145,7 @@ opacity:0.7;
 
 <h1>Bitcoin Price Today</h1>
 
-<div class="price-box" id="btc-price">
-Loading...
-</div>
+<div class="price-box" id="btc-price">Loading...</div>
 
 <p class="credit">
 Price data powered by 
@@ -148,18 +153,22 @@ Price data powered by
 </p>
 
 </header>
+
 <div data-type="_mgwidget" data-widget-id="1977715"></div>
 <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
+
 
 <div class="section">
 
 <h2>Live Bitcoin Chart</h2>
 
-<div id="tradingview_btc"></div>
+<div id="tradingview_btc" style="min-height:500px;"></div>
 
-<script src="https://s3.tradingview.com/tv.js"></script>
+<script defer src="https://s3.tradingview.com/tv.js"></script>
 
 <script>
+window.addEventListener("load",function(){
+
 new TradingView.widget({
 width:"100%",
 height:500,
@@ -169,6 +178,8 @@ theme:"dark",
 style:"1",
 locale:"en",
 container_id:"tradingview_btc"
+});
+
 });
 </script>
 
@@ -183,91 +194,54 @@ Chart powered by
 <div class="grid">
 
 <div class="card">
-
 <h3>Buy Bitcoin Calculator</h3>
-
 <input type="number" id="usd-input" placeholder="USD amount">
-
-<div class="result" id="btc-result">
-0 BTC
+<div class="result" id="btc-result">0 BTC</div>
 </div>
-
-</div>
-
 
 <div class="card">
-
 <h3>Bitcoin Market Cycle</h3>
-
-<div id="cycle-phase" class="big">
-Loading...
-</div>
-
+<div id="cycle-phase" class="big">Loading...</div>
 <p id="cycle-desc"></p>
-
 </div>
 
-
 <div class="card">
-
 <h3>Halving Countdown</h3>
-
-<div class="big" id="halving">
-Loading...
+<div class="big" id="halving">Loading...</div>
 </div>
-
-</div>
-
 
 <div class="card">
-
 <h3>Bitcoin All Time High</h3>
-
-<div class="big" id="ath">
-Loading...
-</div>
-
+<div class="big" id="ath">Loading...</div>
 <div id="ath-distance"></div>
-
 </div>
 
-
 <div class="card">
-
 <h3>Market Sentiment</h3>
-
-<div class="big" id="sentiment">
-Neutral
+<div class="big" id="sentiment">Neutral</div>
 </div>
-
-</div>
-
 
 <div class="card">
-
 <h3>Bitcoin Supply Mined</h3>
-
 <div id="supply-text">Loading...</div>
-
 <div class="bar">
 <div class="bar-fill" id="supply-bar"></div>
 </div>
-
 </div>
 
 </div>
 
 
 <div class="share">
-
 <a href="https://twitter.com/intent/tweet?text=Bitcoin%20Price%20Today%20Live%20BTC%20Dashboard&url=https://www.cryptokita.com" target="_blank">
 Share on X
 </a>
-
 </div>
+
+
 <div style="max-width:500px;margin:50px auto;padding:20px;background:#0f172a;border-radius:10px;text-align:center;">
 
-<h3 style="margin-bottom:10px;">Support CryptoKita</h3>
+<h3>Support CryptoKita</h3>
 
 <p style="font-size:13px;opacity:0.8;margin-bottom:20px;">
 If this Bitcoin dashboard helps you, you can support the project with a small crypto tip.
@@ -276,37 +250,38 @@ If this Bitcoin dashboard helps you, you can support the project with a small cr
 <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
 
 <div>
-
 <b>BTC</b>
 
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t"
-alt="Bitcoin BTC wallet QR code donation"
-style="margin:8px 0;">
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t"
+width="120"
+height="120"
+alt="Bitcoin BTC wallet QR code donation">
 
 <div id="btc-address" style="font-size:11px;word-break:break-all;">
 bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t
 </div>
 
-<button onclick="copyBTC()" style="margin-top:6px;font-size:11px;padding:5px 10px;background:#f7931a;border:none;border-radius:5px;color:white;cursor:pointer;">
+<button onclick="copyBTC()" style="margin-top:6px;font-size:11px;padding:5px 10px;background:#f7931a;border:none;border-radius:5px;color:white;">
 Copy
 </button>
 
 </div>
 
-
-<div style="margin-top:20px;">
-
+<div>
 <b>BNB</b>
 
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0x992F05564dBEb7855d60B526C561016BbB44cbA7"
-alt="BNB wallet QR code donation"
-style="margin:8px 0;">
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0x992F05564dBEb7855d60B526C561016BbB44cbA7"
+width="120"
+height="120"
+alt="BNB wallet QR code donation">
 
 <div id="bnb-address" style="font-size:11px;word-break:break-all;">
 0x992F05564dBEb7855d60B526C561016BbB44cbA7
 </div>
 
-<button onclick="copyBNB()" style="margin-top:6px;font-size:11px;padding:5px 10px;background:#f3ba2f;border:none;border-radius:5px;color:black;cursor:pointer;">
+<button onclick="copyBNB()" style="margin-top:6px;font-size:11px;padding:5px 10px;background:#f3ba2f;border:none;border-radius:5px;color:black;">
 Copy
 </button>
 
@@ -318,34 +293,19 @@ Copy
 
 </div>
 
-<script>
-function copyBTC(){
-navigator.clipboard.writeText("bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t");
-document.getElementById("copy-msg").innerHTML="BTC copied 👍";
-}
-
-function copyBNB(){
-navigator.clipboard.writeText("0x992F05564dBEb7855d60B526C561016BbB44cbA7");
-document.getElementById("copy-msg").innerHTML="BNB copied 👍";
-}
-</script>
-
-
 
 <footer>
 
 <p>
 Learn more crypto insights at 
-<a href="https://www.cryptokita.com" target="_blank" style="color:#38bdf8;">
-CryptoKita
-</a>
+<a href="https://www.cryptokita.com" target="_blank" style="color:#38bdf8;">CryptoKita</a>
 </p>
 
-<p>
-Disclaimer: Informational only, not financial advice.
-</p>
+<p>Disclaimer: Informational only, not financial advice.</p>
+
 <div data-type="_mgwidget" data-widget-id="1977718"></div>
 <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
+
 </footer>
 
 
@@ -357,7 +317,7 @@ async function loadBTC(){
 
 try{
 
-let res=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd");
+let res=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",{cache:"force-cache"});
 
 let data=await res.json();
 
@@ -385,8 +345,7 @@ if(!btcPrice)return;
 
 let btc=usd/btcPrice;
 
-document.getElementById("btc-result").innerHTML=
-btc.toFixed(6)+" BTC";
+document.getElementById("btc-result").innerHTML=btc.toFixed(6)+" BTC";
 
 });
 
@@ -401,37 +360,10 @@ let desc="";
 
 let cycle=(year-2024)%4;
 
-if(cycle===0){
-
-phase="BULL RUN";
-css="bull";
-desc="Expansion phase after halving.";
-
-}
-
-if(cycle===1){
-
-phase="EUPHORIA";
-css="euphoria";
-desc="Historically peak bull market.";
-
-}
-
-if(cycle===2){
-
-phase="CORRECTION";
-css="correction";
-desc="Market cooling after peak.";
-
-}
-
-if(cycle===3){
-
-phase="ACCUMULATION";
-css="accumulation";
-desc="Early accumulation stage.";
-
-}
+if(cycle===0){phase="BULL RUN";css="bull";desc="Expansion phase after halving.";}
+if(cycle===1){phase="EUPHORIA";css="euphoria";desc="Historically peak bull market.";}
+if(cycle===2){phase="CORRECTION";css="correction";desc="Market cooling after peak.";}
+if(cycle===3){phase="ACCUMULATION";css="accumulation";desc="Early accumulation stage.";}
 
 let el=document.getElementById("cycle-phase");
 
@@ -448,13 +380,11 @@ bitcoinCycle();
 function halvingCountdown(){
 
 let halving=new Date("2028-04-01").getTime();
-
 let now=new Date().getTime();
 
 let days=Math.floor((halving-now)/(1000*60*60*24));
 
-document.getElementById("halving").innerHTML=
-days+" days";
+document.getElementById("halving").innerHTML=days+" days";
 
 }
 
@@ -475,8 +405,7 @@ document.getElementById("ath").innerHTML="$"+ath.toLocaleString();
 
 let distance=((btcPrice-ath)/ath*100).toFixed(2);
 
-document.getElementById("ath-distance").innerHTML=
-distance+"% from ATH";
+document.getElementById("ath-distance").innerHTML=distance+"% from ATH";
 
 }catch{
 
@@ -491,29 +420,10 @@ setTimeout(loadATH,2000);
 
 function sentiment(){
 
-if(btcPrice>90000){
-
-document.getElementById("sentiment").innerHTML="Extreme Greed";
-
-}
-
-else if(btcPrice>70000){
-
-document.getElementById("sentiment").innerHTML="Greed";
-
-}
-
-else if(btcPrice>40000){
-
-document.getElementById("sentiment").innerHTML="Neutral";
-
-}
-
-else{
-
-document.getElementById("sentiment").innerHTML="Fear";
-
-}
+if(btcPrice>90000){document.getElementById("sentiment").innerHTML="Extreme Greed";}
+else if(btcPrice>70000){document.getElementById("sentiment").innerHTML="Greed";}
+else if(btcPrice>40000){document.getElementById("sentiment").innerHTML="Neutral";}
+else{document.getElementById("sentiment").innerHTML="Fear";}
 
 }
 
@@ -527,15 +437,24 @@ let total=21;
 
 let percent=(mined/total)*100;
 
-document.getElementById("supply-text").innerHTML=
-mined+"M / 21M BTC";
+document.getElementById("supply-text").innerHTML=mined+"M / 21M BTC";
 
-document.getElementById("supply-bar").style.width=
-percent+"%";
+document.getElementById("supply-bar").style.width=percent+"%";
 
 }
 
 supply();
+
+
+function copyBTC(){
+navigator.clipboard.writeText("bc1qsrvsy2p3540d48kdel6huj4984332kefmsd99t");
+document.getElementById("copy-msg").innerHTML="BTC copied 👍";
+}
+
+function copyBNB(){
+navigator.clipboard.writeText("0x992F05564dBEb7855d60B526C561016BbB44cbA7");
+document.getElementById("copy-msg").innerHTML="BNB copied 👍";
+}
 
 </script>
 
